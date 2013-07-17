@@ -1,0 +1,37 @@
+/* 
+    Document   : index
+    Created on : Jan 17, 2013, 1:39:34 PM
+    Author     : Nikesh Hajari
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+body .modal {
+  width: 25%; /* desired relative width */
+  left: 37.5%; /* (100%-width)/2 */
+  margin: auto auto auto auto; /* place center */
+}
+
+.required-star{
+    color: red;
+}
+
+.center-text{
+    text-align: center;
+    font-size: 44px;
+    font-weight: bolder;
+    height: 200px;
+    line-height: 250px;
+}
+
+.message-container{
+    font-size: 20px;
+}
+
+label.error {
+    font-weight: bold;
+    color: red;
+    padding: 2px 8px;
+    margin-top: 2px;
+}

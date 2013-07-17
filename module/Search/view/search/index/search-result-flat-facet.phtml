@@ -1,0 +1,15 @@
+<?php
+    foreach($this->facet->getFacetData() as $name => $count)
+    {
+        print '<li>';
+            $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+            $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+            $solrSearchUrl->addFilterQuery('applicant_position_name: "'.$name.'"');
+            $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+        print '<a href=' . $url . '>';
+        print '<span class="facet-name">' . $name . '</span>';
+        print '<span class="facet-count"> (' . $count . ')</span>';
+        print '</a>';
+        print '</li>';
+    }
+?>

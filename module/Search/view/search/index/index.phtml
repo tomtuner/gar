@@ -1,0 +1,38 @@
+<!-- Page Title -->
+<div class="row page-title">
+    <h3>GA Recruiting @ RIT: Candidate Finder</h3>
+</div>
+
+<!-- Search Box -->
+<div class="row">
+    <div class="well">
+        <form method="get" action="/gar/search" class="form-inline" >
+            <input id="q" name="q" class="span11" type="text"  placeholder="Keywords: leadership, graphic design, vending" >
+            <button type="submit" class="btn btn-primary btn-large"> <i class="icon-search icon-white"></i></button>
+        </form>
+    </div>
+</div>
+
+<!-- Render Search Result Container -->
+<div class="row">
+    <?php
+    //only render search result container if we have results
+    if($this->numberOfDocumentsFound > 0)
+    {
+        print $this->partial('search/search-result-container');
+    } else
+    {
+        ?>
+        <!-- Conditional Result -->
+        <h3>No matching results found for your search criteria "<?php print $this->q; ?>"</h3>
+        <?php
+    } //end conditional
+    ?>
+</div>
+
+<div class="row">
+    <hr>
+    <footer>
+        <p>&copy; Rochester Institute of Technology 2013</p>
+    </footer>
+</div>

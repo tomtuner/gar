@@ -1,0 +1,3 @@
+placeHolderSupport=("placeholder"in document.createElement("input"));if(!placeHolderSupport){jQuery(document).ready(function(){jQuery('input[placeholder], textarea').each(function(index,domElement){jQuery(domElement).val(jQuery(this).attr("placeholder"));jQuery(this).css('color','#A9A9A9');jQuery(domElement).focus(function(){var input=jQuery(this);input.css('color','black');if(input.attr("placeholder")==input.val())
+{input.val("");}});jQuery(domElement).blur(function(){var input=jQuery(this);if(input.val()=="")
+{input.val(input.attr("placeholder"));input.css('color','#A9A9A9');}});});});}

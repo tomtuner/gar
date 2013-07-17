@@ -1,0 +1,53 @@
+<?php if($this->pageCount):?>
+    <div class="pagination">
+        <ul>
+        <!-- Previous page link -->
+        <?php 
+                if(isset($this->previous)):
+                    
+                $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                $solrSearchUrl->setPage($this->previous);
+                $solrSearchUrl->setStart(($this->previous - 1) * $this->rows);
+                $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+        ?>
+        <li><a href="<?php echo $url; ?>">< Prev</a></li>
+        <?php else:?>
+            <li><span class="disabled-pager-link">< Prev</span></li>
+    <?php endif;?>
+
+        <!-- Numbered page links -->
+        <?php foreach($this->pagesInRange as $page):?>
+                <?php 
+                    if($page != $this->current):
+                        $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                        $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                        $solrSearchUrl->setPage($page);
+                        $solrSearchUrl->setStart(($page - 1) * $this->rows);
+                        $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+                ?>
+        <li><a href="<?php echo $url; ?>">
+                <?php echo $page;?>
+                </a></li>
+            <?php else:?>
+                <li><span class="active-pager-link"><?php echo $page;?></span></li>
+        <?php endif;?>
+        <?php endforeach;?>
+
+        <!-- Next page link -->
+    <?php 
+        if(isset($this->next)):
+            
+        $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+        $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+        $solrSearchUrl->setPage($this->next);
+        $solrSearchUrl->setStart(($this->next - 1) * $this->rows);
+        $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+    ?>
+        <li><a href="<?php echo $url; ?>">Next ></a></li>
+    <?php else:?>
+        <li><span class="disabled-pager-link">Next ></span></li>
+    <?php endif;?>
+        </ul>
+    </div>
+<?php endif;?>

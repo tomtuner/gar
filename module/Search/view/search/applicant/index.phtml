@@ -1,0 +1,262 @@
+<div class="row">
+    <h3>Graduate Assistant @ RIT: Candidate Viewer</h3>
+</div>
+
+<div class="row tab-container">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a href="#home">Profile</a></li>
+        <!-- <li><a href="#profile">Status</a></li> -->
+        <!-- <li><a href="#messages">Comments</a></li> -->
+        <li class="dropdown">
+            <a class="dropdown-toggle"
+               data-toggle="dropdown"
+               href="#">
+                Quick Actions
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li> <a href="mailto:<?php print $this->applicant->getApplicantEmailAddress();?>">
+                        <i class="icon-envelope icon-white icon-2x"></i>
+                        Email Candidate
+                    </a> 
+                </li>
+                <li>
+                    <a href="<?php print 'https://campuslife.rit.edu/gar/search/download-file?filename=' . $this->applicant->getApplicantResumeCoverLetterAttachmentFileName();?>" title="Download Resume">
+                        <i class="icon-download-alt icon-white icon-2x"></i>
+                        Download Resume
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            <div class="row">
+                <div class="span3">
+
+                    <div class="row-fluid card-container">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span12 card-title">
+                                    Contact Information
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 card-information">
+                                    <strong>
+                                        <?php print $this->applicant->getApplicantFirstName();?> 
+                                        <?php print $this->applicant->getApplicantLastName();?>
+                                    </strong><br>
+                                    <?php print $this->applicant->getApplicantAddressOne();?><br>
+
+                                    <!-- Conditional To Render Address Line Two -->
+                                    <?php
+                                    $a = $this->applicant->getApplicantAddressTwo();
+                                    if(!empty($a)):
+                                        ?>
+                                        <?php print $this->applicant->getApplicantAddressTwo();?><br>
+                                    <?php endif;?>
+
+                                    <?php print $this->applicant->getApplicantCity();?>,
+                                    <?php print $this->applicant->getApplicantStateProvinceRegion();?>
+                                    <?php print $this->applicant->getApplicantZipPostalCode();?>
+                                    <br/>
+                                    <?php print $this->applicant->getApplicantCountry();?>
+                                    <br>
+                                    <abbr title="Phone">P:</abbr> <?php print $this->applicant->getApplicantTelephoneNumber();?>
+                                    <br/>
+                                    <a href="mailto:<?php print $this->applicant->getApplicantEmailAddress();?>">
+                                        <?php print $this->applicant->getApplicantEmailAddress();?>                        
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid card-container">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span12 card-title">
+                                    Graduate Institution
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 card-information">
+                                    <strong><?php print $this->applicant->getApplicantGraduateInstitution();?></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid card-container">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span12 card-title">
+                                    Undergraduate Institution
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 card-information">
+                                    <strong><?php print $this->applicant->getApplicantUndergraduateInstitution();?></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid card-container">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span12 card-title">
+                                    Graduate Program
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 card-information">
+                                    <strong><?php print $this->applicant->getApplicantGraduateProgram();?></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid card-container">
+                        <div class="span12">
+                            <div class="row-fluid">
+                                <div class="span12 card-title">
+                                    Submission Date
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12 card-information">
+                                    <strong><?php print $this->applicant->getApplicantSubmissionDate();?></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="span9">
+                    <div class="row-fluid">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                        Essay Question: Personal Qualities
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                        <h4>How will your personal qualities influence and contribute to the RIT community?</h4>
+                                        <?php print html_entity_decode($this->applicant->getApplicantEssayPersonalQualities());?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                        Essay Question: Prior Experiences
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <h4>How has your prior experiences prepared you for this assistantship opportunity?</h4>
+                                        <?php print html_entity_decode($this->applicant->getApplicantEssayPriorExperiences());?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                        Reference One
+                                    </a>
+                                </div>
+                                <div id="collapseThree" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <?php print html_entity_decode($this->applicant->getApplicantReferenceOne());?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                                        Reference Two
+                                    </a>
+                                </div>
+                                <div id="collapseFour" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <?php print html_entity_decode($this->applicant->getApplicantReferenceTwo());?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                                        Reference Three
+                                    </a>
+                                </div>
+                                <div id="collapseFive" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <?php print html_entity_decode($this->applicant->getApplicantReferenceThree());?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="tab-pane" id="profile">
+
+            <div class="row">
+                <div class="span12">
+                    <h3>Applicant Status</h3>
+                </div>
+            </div>
+
+        </div>
+		
+		<!--
+        <div class="tab-pane" id="messages">
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="control-group">
+                        <label class="control-label" for="candidate_comment_text">Comment:</label>
+                        <div class="controls">
+                            <textarea id="candidate_comment_text" name="candidate_comment_text"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12 candidate-comment-container">
+                    <div class="row-fluid">
+                        <div class="candidate-commenter pull-left">
+                            Nikesh Hajari
+                        </div>
+                        <div class="candidate-comment-time pull-right">
+                            10/15/2013 2:15 P.M.
+                        </div>
+                    </div>
+                    <div class="row-fluid candidate-comment">
+                        <blockquote>
+                            Test comment
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        -->
+    </div>
+</div>
+
+<div class="row">
+    <hr>
+    <footer>
+        <p>&copy; Rochester Institute of Technology 2013</p>
+    </footer>
+</div>

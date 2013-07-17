@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <!-- 
+    <log>
+      <ident>propel-bookstore</ident>
+      <type>console</type>
+      <level>7</level>
+    </log> 
+    -->
+    <propel>
+        <datasources>
+            <datasource id="ga_recruiting">
+                <adapter>mysql</adapter>
+                <connection>
+                    <dsn>mysql:host=127.0.0.1;port=3306;dbname=ga_recruiting</dsn>
+                    <user>cclwww</user>
+                    <password>EatYourDat4</password>
+                    <attributes>
+                        <option id="MYSQL_ATTR_USE_BUFFERED_QUERY">true</option>
+                    </attributes>
+                    <settings>
+                        <setting id="queries">
+                            <query>SET NAMES utf8</query><!-- automatically set UTF8 encoding -->
+                        </setting>
+                    </settings>
+                </connection>
+            </datasource>
+        </datasources>
+    </propel>
+</config>

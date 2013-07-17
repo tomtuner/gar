@@ -1,0 +1,156 @@
+<div class="row-fluid">
+    <!-- Facet Navigation Container -->
+    <div class="span3">
+        <div class="sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">
+                    <div class="nav-header-content">Graduate Position (<?php print $this->testFacet->getFacetSize();?>)</div>
+                </li>
+
+                <?php print $this->partial('search/search-result-flat-facet',
+                                array('facet' => $this->testFacet));?>
+
+            </ul>
+        </div>
+    </div>
+    <!-- Search Result Container -->
+    <div class="span9">
+        <!-- Search Breadcrumbs Container -->
+        <div class="row-fluid">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <?php
+                    $lastItem = key(array_slice($this->breadCrumbs, -1, 1, TRUE ));
+                    foreach($this->breadCrumbs as $breadCrumbName => $breadCrumbLink)
+                    {
+                        $url = $this->url('Search-index/query') . '?' . str_replace(array('%3D', '%26', '%3A'),
+                                        array('=', '&', ':'),
+                                        urlencode($breadCrumbLink));
+                        print "<li>";
+                        print "<a href=" . $url . ">";
+                        if($breadCrumbName == '"*:*"')
+                        {
+                            print 'All Results';
+                        }
+                        else
+                        {
+                            print $breadCrumbName;
+                        }
+                        print "</a>";
+
+                        if($breadCrumbName != $lastItem)
+                        {
+                            print '<span class="divider">></span>';
+                        }
+                        print '</li>';
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <!-- Search Results Summary Container-->
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="pull-left">
+                    <div class="result-summary-header">
+                        <h4><?php print $this->numberOfDocumentsFound;?> results found matching your search criteria</h4>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            Sort By
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="<?php 
+                                    $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                                    $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                                    $solrSearchUrl->setSort('score desc');
+                                    $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+                                    print $url;
+                                ?>">
+                                    Relevance
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="<?php
+                                    $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                                    $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                                    $solrSearchUrl->setSort('applicant_last_name asc');
+                                    $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+                                    print $url;
+                                ?>">
+                                    Last Name (A-Z)
+                                </a>
+                            </li>
+                            <li>
+                               <a href="<?php 
+                                    $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                                    $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                                    $solrSearchUrl->setSort('applicant_submission_date desc');
+                                    $url = $this->url('Search-index/query') . '?' . $solrSearchUrl->getSolrSearchUrl();
+                                    print $url;
+                               ?>">
+                                   Most Recent Applied
+                               </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="btn" href="<?php print $this->url('Search-index/query',
+                                    array('q' => '*:*'));?>">View All</a>
+                    <a class="btn btn-primary" href="javascript:void(0);"><i class="icon-question-sign"></i> Help</a>
+                </div>
+            </div>
+        </div>
+        <!-- Search Results Container -->
+        <div class="row-fluid search-result-container">
+            <div class="span12">
+                <?php
+                foreach($this->searchDocuments as $document)
+                {
+
+                    $solrSearchUrl = new Solr\Url\SolrSearchUrl();
+                    $solrSearchUrl->importQueryString($_SERVER['QUERY_STRING']);
+                    if($solrSearchUrl->getQuery() == '*:*')
+                    {
+                        $applicantResumeText = substr($document->{'applicant_resume_text'}, 0, 300);
+                    }
+                    else
+                    {
+                        $applicantResumeText = substr($document->{'applicant_resume_text'}, 0, 300) 
+                                              . '....' . substr($document->{'applicant_essay_personal_qualities'}, 0, 300)
+                                              . '....' . substr($document->{'applicant_essay_prior_experiences'}, 0, 300);
+                    }
+                    
+                    print $this->partial('search/search-result-row',
+                                    array(
+                                'applicantFirstName' => $document->{'applicant_first_name'},
+                                'applicantLastName' => $document->{'applicant_last_name'},
+                                'applicantResumeText' => $applicantResumeText,
+                                'applicantEmailAddress' => $document->{'applicant_email_address'},
+                                'applicantResumeFileName' => $document->{'applicant_resume_cover_letter_attachment_file_name'},
+                                'applicantSubmissionDate' => $document->{'applicant_submission_date'},
+								'applicantId' => $document->{'applicant_id'},
+                                    )
+                            );
+                }
+                ?>
+            </div>
+        </div>
+        <!-- Results Pager -->
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="pull-right">
+                    <?php
+                    print $this->paginationControl($this->paginator, 'Sliding',
+                                    'search/pagination-control.phtml',
+                                    array('rows' => 10));
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

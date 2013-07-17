@@ -1,0 +1,34 @@
+<?php echo $this->doctype();?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Graduate Assistant Recruiting @ RIT');?>
+        <?php
+        echo $this->headMeta()->appendName('viewport',
+                'width=device-width, initial-scale=1.0')
+        ?>
+        <?php
+        echo $this->plugin('HeadLink');
+        echo $this->plugin('HeadStyle');
+        echo $this->plugin('HeadScript');
+        ?>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="/gar">Graduate Assistant @ RIT</a>
+                <ul class="nav">
+                    <li><a href="mailto:drgrla@rit.edu?subject=GA Recruiting Application Help"><i class="icon-envelope icon-white"></i> E-mail Us</a></li>
+                    <li><a href="/gar/authentication/logoff"><i class="icon-signout icon-white"></i> Sign-Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Header Here -->
+        <div class="container">
+            <?php echo $this->content;?>
+        </div> <!-- /container -->
+        <!-- Footer Here -->
+        <?php echo $this->inlineScript()?>
+    </body>
+</html>

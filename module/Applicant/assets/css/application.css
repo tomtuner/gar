@@ -1,0 +1,26 @@
+/* 
+    Document   : application
+    Created on : Jan 16, 2013, 3:24:29 PM
+    Author     : Nikesh Hajari
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.bold{
+    font-weight: bold;
+}
+
+.prepend-text-field{
+    width: 180px;
+}
+
+label.error {
+    font-weight: bold;
+    color: red;
+    padding: 2px 8px;
+    margin-top: 2px;
+}
+
+.required-star{
+    color: red;
+}

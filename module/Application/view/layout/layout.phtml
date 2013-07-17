@@ -1,0 +1,33 @@
+<?php echo $this->doctype();?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Campus Center for Life'); ?>
+        <?php
+        echo $this->headMeta()->appendName('viewport',
+                'width=device-width, initial-scale=1.0')
+        ?>
+        <?php
+        echo $this->plugin('HeadLink');
+        echo $this->plugin('HeadStyle');
+        echo $this->plugin('HeadScript');
+        ?>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Campus Center for Life</a>
+                <ul class="nav">
+                    <li><a href="/clubs"><i class="icon-home icon-white"></i> Club Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Header Here -->
+        <div class="container">
+            <?php echo $this->content;?>
+        </div> <!-- /container -->
+        <!-- Footer Here -->
+        <?php echo $this->inlineScript()?>
+    </body>
+</html>

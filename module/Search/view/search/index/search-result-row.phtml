@@ -1,0 +1,50 @@
+<!-- Search Result Row -->
+<div class="row-fluid search-result-row">
+    <div class="span11">
+
+        <!-- Search Result Header -->
+        <div class="row-fluid search-result-row-header">
+            <div class="span12">
+                <div class="pull-left">
+                    <h3>
+                        <?php print $this->applicantLastName;?>,
+                        <?php print $this->applicantFirstName;?>
+                    </h3>
+                </div>
+                <div class="pull-right">
+                    <div class="applicant-date-container">
+                        <span class="label label-info">
+                            Applied: <?php
+                        print date("m/d/Y",
+                                        strtotime($this->applicantSubmissionDate));
+                        ?>
+                        </span>
+                    </div>
+                    <div class="link-panel-container">
+                        <span>
+                            <a href="https://campuslife.rit.edu/gar/admin/applicant?applicant_id=<?php print $this->applicantId;?>" class="tooltip-link panel-link" data-toggle="tooltip" data-placement="top" title="View Candidate Profile">
+									<i class="icon-edit icon-white icon-2x"></i>
+									&nbsp;
+                            </a>                
+                            <a href="mailto:<?php print $this->applicantEmailAddress;?>" class="tooltip-link panel-link" data-toggle="tooltip" data-placement="top" title="E-mail Candidate">
+                                <i class="icon-envelope icon-white icon-2x"></i>
+                                &nbsp;
+                            </a>
+                            <a href="http://campuslife.rit.edu/gar/search/download-file?filename=<?php print urlencode($this->applicantResumeFileName);?>" class="tooltip-link panel-link" data-toggle="tooltip" data-placement="top" title="Download Resume">
+                                <i class="icon-download-alt icon-white icon-2x"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Result Content -->
+        <div class="row-fluid search-result-row-content">
+            <div class="span12">
+                <?php print $this->applicantResumeText;?>
+            </div>
+        </div>
+
+    </div>
+</div>

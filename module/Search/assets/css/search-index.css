@@ -1,0 +1,162 @@
+/* 
+    Document   : index
+    Created on : Jan 17, 2013, 1:39:34 PM
+    Author     : Nikesh Hajari
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+/* Search Query Box */
+#q{
+    height: 50px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/* Search Result Panel Links */
+.panel-link i{
+   font-size: 22px; 
+   line-height: 2.0em; 
+}
+
+.panel-link:link{
+    text-decoration: none;
+    color: white;
+}
+
+.panel-link:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.panel-link:active{
+    text-decoration: none;
+    color: white;
+}
+
+.panel-link:hover{
+    text-decoration: none;
+    color: white;
+}
+
+/* Search Result Highlighting */
+em{
+    font-weight: bold;
+    background-color:yellow;
+}
+
+/* Page Title */
+.page-title{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Link Panel Container */
+.link-panel-container{
+    float: left;
+    margin-top: 16px;
+    background-color: green;
+    height: 32px;
+    padding: 0px 5px 0px 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+/* Link Panel Container Icons */
+.link-panel-container i{
+    margin-top: -5px;
+}
+
+/* Applicant Submission Date Label Container */
+.applicant-date-container{
+    float: left;
+    margin-top: 21px;
+    margin-right: 7px;
+}
+
+/* Search Result Row */
+.search-result-row{
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding-bottom: 20px;
+}
+
+/* Search Result Row Content */
+.search-result-row-content{
+    margin-top: 10px;
+}
+
+/* Search Result Content Indentation */
+.search-result-row-content, .search-result-row-header{
+    margin-left: 25px;
+}
+
+/* Search Result Summary Container */
+.result-summary-header{
+    margin-top: -5px;
+}
+
+/* Search Result Container */
+.search-result-container{
+    margin-top: 15px;
+}
+
+/* Facet Name Size & Color */
+.facet-name{
+    font-size: 12px;
+}
+
+/* Facet Count Size & Color */
+.facet-count{
+    font-size: 12px;
+    color: gray;
+}
+
+/* Facet Section Title */
+.nav-header{
+    background-color: #f5f5f5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    vertical-align: middle;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    height: 30px;
+    border: 1px solid lightgray;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+/* Facet Section Title Inner Content */
+.nav-header-content{
+    margin-top: 6px;
+}
+
+/* Breadcrumb Container Style */
+.breadcrumb{
+    border: 1px solid lightgray;
+}
+
+/* Active Pager Link Color */
+.active-pager-link{
+    text-decoration: none;
+    color: orange;
+    font-size: 20px;
+}
+
+/* Disabled Pager Link Color */
+.disabled-pager-link{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+/* Pagination Button Styling **/
+.pagination a{
+    font-size: 20px;
+    height: 20px;
+}
